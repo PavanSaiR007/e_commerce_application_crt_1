@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #faebd7; }
+        .card { border: 1px solid black; background-color: #ffe4e1; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/product/view_all_product">E-Commerce App</a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/product/view_all_product">Home / Products</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Your Shopping Cart</h2>
+        <div class="row mt-4">
+            {% if cart_data %}
+                {% for item in cart_data %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.product_name }}</h5>
+                                <p class="card-text">Price: {{ item.p_price }}</p>
+
+                                <form action="/product/remove_from_cart/{{ item.cart_id }}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Remove from Cart</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Your cart is empty!</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: bisque;
+            padding: 30px;
+            font-family: sans-serif;
+        }
+        form {
+            padding: 20px;
+            border: 1px solid black;
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body bgcolor="bisque">
+    <marquee><h1>Product Form</h1></marquee>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Name: </label>
+        <input type="text" name="p_name" placeholder="Enter the Product Name" >
+        <br><br>
+        <label>Price: </label>
+        <input type="text" name="p_price" placeholder="Enter the Price of the Product" >
+        <br><br>
+        <label>Type: </label>
+        <input type="text" name="p_type" placeholder="Enter the Product Type" >
+        <br><br>
+        <label>Quantity: </label>
+        <input type="text" name="p_quantity" placeholder="Enter the Quantity of the Product" >
+        <br><br>
+        <button type="submit">Add Product</button>
+
+    </form>
+</body>
+</html>
